@@ -90,7 +90,7 @@
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
+        "silk_edge_clearance": "ignore",
         "silk_over_copper": "warning",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
@@ -428,7 +428,11 @@
     "meta": {
       "version": 2
     },
-    "net_colors": null
+    "net_colors": {
+      "+12V": "rgb(255, 252, 21)",
+      "+5V": "rgb(255, 10, 8)",
+      "GND": "rgb(21, 93, 255)"
+    }
   },
   "pcbnew": {
     "last_paths": {
@@ -436,7 +440,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "LightControllerBasic.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
