@@ -1,0 +1,88 @@
+esphome:
+  name: lightcontrollerbasic
+
+esp32:
+  board: mhetesp32minikit
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "oNuAboPsus9vQw9twnLYusGp7tZmfngv2dZaPN7t"
+
+ota:
+  password: "bQSqR3DHZiokc5HUrXjv29bnK5CuawZp29Feurrn"
+
+wifi:
+  ssid: "WIFI"
+  password: "bQSqR3DHZiokc5HUrXjv29bnK5CuawZp29Feurrn"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Lightcontrollerbasic"
+    password: "ickjTamWSo6Ah2S3bxVgyNw2bPwsjHJdSS7CYCEc"
+
+captive_portal:
+
+web_server:
+  port: 80
+
+status_led:
+  pin: GPIO2
+
+light:
+  - platform: binary
+    name: "Licht Reihe 1"
+    output: light_row_1
+  - platform: binary
+    name: "Licht Reihe 2"
+    output: light_row_2
+  - platform: binary
+    name: "Licht Reihe 3"
+    output: light_row_3
+  - platform: binary
+    name: "Licht Reihe 4"
+    output: light_row_4
+  - platform: binary
+    name: "Licht Reihe 5"
+    output: light_row_5
+  - platform: binary
+    name: "Licht Reihe 6"
+    output: light_row_6
+  - platform: binary
+    name: "Licht Reihe 7"
+    output: light_row_7
+  - platform: binary
+    name: "Licht Reihe 8"
+    output: light_row_8
+
+
+
+output:
+  - id: light_row_1
+    platform: gpio
+    pin: GPIO16
+  - id: light_row_2
+    platform: gpio
+    pin: GPIO17
+  - id: light_row_3
+    platform: gpio
+    pin: GPIO21
+  - id: light_row_4
+    platform: gpio
+    pin: GPIO22
+  - id: light_row_5
+    platform: gpio
+    pin: GPIO19
+  - id: light_row_6
+    platform: gpio
+    pin: GPIO23
+  - id: light_row_7
+    platform: gpio
+    pin: GPIO18
+  - id: light_row_8
+    platform: gpio
+    pin: GPIO26
