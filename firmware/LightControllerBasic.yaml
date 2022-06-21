@@ -11,27 +11,51 @@ logger:
 
 # Enable Home Assistant API
 api:
-  password: "oNuAboPsus9vQw9twnLYusGp7tZmfngv2dZaPN7t"
+  password: !secret API_PASSWORD
 
 ota:
-  password: "bQSqR3DHZiokc5HUrXjv29bnK5CuawZp29Feurrn"
+  password: !secret OTA_PASSWORD 
 
 wifi:
-  ssid: "WIFI"
-  password: "bQSqR3DHZiokc5HUrXjv29bnK5CuawZp29Feurrn"
+  networks:
+    - ssid: !secret HOME_WIFI_SSID
+      password: !secret HOME_WIFI_PASSWORD
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Lightcontrollerbasic"
-    password: "ickjTamWSo6Ah2S3bxVgyNw2bPwsjHJdSS7CYCEc"
+    password: !secret AP_PASSWORD
 
 captive_portal:
 
 web_server:
+  auth:
+    username: !secret WEB_SERVER_USER
+    password: !secret WEB_SERVER_PASSWORD
   port: 80
 
 status_led:
   pin: GPIO2
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: ESP IP Address
+    ssid:
+      name: ESP Connected SSID
+    bssid:
+      name: ESP Connected BSSID
+    mac_address:
+      name: ESP Mac Wifi Address
+    scan_results:
+      name: ESP Latest Scan Results
+  - platform: version
+    name: "ESPHome Version"
+
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"
+    update_interval: 60s
 
 light:
   - platform: binary
@@ -58,8 +82,6 @@ light:
   - platform: binary
     name: "Licht Reihe 8"
     output: light_row_8
-
-
 
 output:
   - id: light_row_1
